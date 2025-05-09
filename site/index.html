@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share Your Story</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link rel="stylesheet" href="/styles.css" integrity="sha384-…">
+  <script src="https://esm.sh/react@19.1.0"   integrity="sha384-…" crossorigin></script>
+  <script src="https://esm.sh/react-dom@19.1.0/client" integrity="sha384-…" crossorigin></script> -->
+</head>
+<body class="bg-gradient-to-b from-slate-50 to-slate-100 text-gray-800 h-full">
+  <section class="max-w-3xl mx-auto py-24 px-4 text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+      Tell us why sustainability matters to <span class="text-emerald-600">you</span>
+    </h1>
+    <p class="text-lg md:text-xl mb-8">
+      Scan the QR code or chat below to craft a personalised e-mail to our policy team.  
+      One minute is all it takes.
+    </p>
+
+    <!-- Chat container-->
+    <div id="chat-root" class="relative mx-auto max-w-xl"></div>
+    <a id="cta-email" href="${MAILTO_LINK}" class="inline-block mt-12 px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg transition hover:-translate-y-0.5">
+      Start my e-mail
+    </a>
+  </section>
+
+  <script type="module" src="./mailto.js"></script>
+</body>
+</html>
