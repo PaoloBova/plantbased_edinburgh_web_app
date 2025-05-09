@@ -1,0 +1,14 @@
+{
+    "name": "plantbased-edinburgh",
+    "type": "module",
+    "engines": { "node": ">=20" },
+    "scripts": {
+      "build:css": "npx tailwindcss -i ./src/tailwind.css -o ./site/styles.css --minify"
+    },
+    "dependencies": {
+      "openai": "^4.0.0"
+    },
+    "devDependencies": {
+      "tailwindcss": "^3.4.4"
+    }
+  }
