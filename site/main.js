@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatForm = document.getElementById('chat-form');
   const chatInput = document.getElementById('chat-input');
 
+  let systemPrompt = "";
+  fetch('/system_prompt.json', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(data => { systemPrompt = data.systemPrompt; })
+    .catch(err => console.error('Error loading system prompt:', err));
+
   chatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const userMessage = chatInput.value.trim();
@@ -14,12 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Send message to serverless function
     try {
+      const body = JSON.stringify({
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userMessage }
+        ]
+      });
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: userMessage })
+        body: body
       });
 
       if (!response.ok) {
@@ -38,23 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('p-3', 'rounded-lg', 'shadow', 'max-w-full', 'break-words');
 
-    const messageWrapper = document.createElement('div');
-    messageWrapper.classList.add('flex', 'items-start');
-
     if (sender === 'You') {
       messageDiv.classList.add('bg-emerald-100', 'self-end', 'text-right');
-      messageWrapper.classList.add('justify-end');
     } else if (sender === 'Assistant') {
       messageDiv.classList.add('bg-gray-100', 'self-start', 'text-left');
-      messageWrapper.classList.add('justify-start');
     } else {
       messageDiv.classList.add('bg-red-100', 'text-red-800', 'self-start', 'text-left');
-      messageWrapper.classList.add('justify-start');
     }
 
     messageDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
-    messageWrapper.appendChild(messageDiv);
-    chatWindow.appendChild(messageWrapper);
+    chatWindow.appendChild(messageDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }
 });

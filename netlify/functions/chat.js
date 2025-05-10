@@ -1,52 +1,93 @@
-export default async (req, res) => {
-  const cors = {
+// Netlify bundles this file with esbuild; requires Node ≥20.
+export const handler = async (event, context) => {
+  const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "OPTIONS,POST",
+    "Access-Control-Allow-Methods": "OPTIONS,POST"
   };
-  if (req.method === "OPTIONS") {
-    res.writeHead(200, cors);
-    return res.end();
+  if (event.httpMethod === "OPTIONS") {
+    return { statusCode: 200, headers };
   }
 
-  // Simple IP-based rate limit (20 req / 10 min in memory)
-  if (!global.bucket) global.bucket = new Map();
-  const key = req.headers["x-nf-client-connection-ip"];
+  // ---------- 0. Pre-flight ----------
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) };
+  }
+  const ip = event.headers['x-nf-client-connection-ip'] || 'unknown';
+
+  // ---------- 1. Very cheap rate-limit (20 req / 5 min per IP) ----------
+  globalThis.bucket ??= new Map();
   const now = Date.now();
-  const counter = global.bucket.get(key) || [];
-  global.bucket.set(key, counter.filter(t => now - t < 6e5).concat(now));
-  if (global.bucket.get(key).length > 20) return res.status(429).end();
+  const hits = (globalThis.bucket.get(ip) || []).filter(t => now - t < 300_000);
+  if (hits.length >= 20) {
+    return { statusCode: 429, headers, body: JSON.stringify({ error: 'Rate limit' }) };
+  }
+  globalThis.bucket.set(ip, [...hits, now]);
 
-  const body = JSON.parse(req.body || "{}");
-  const userMessage = body.message;
-  if (!userMessage) return res.status(400).json({ error: "No message provided" });
+  // ---------- 2. Parse & validate body ----------
+  let body;
+  try {
+    body = JSON.parse(event.body || "{}"); // now expects { messages: [...] }
+  } catch {
+    return { statusCode: 400, headers, body: JSON.stringify({ error: "Bad JSON" }) };
+  }
 
-  // 1. OpenAI moderation guard
-  const mod = await fetch("https://api.openai.com/v1/moderations", {
-    method: "POST",
-    headers: auth,
-    body: JSON.stringify({ input: userMessage })
+  const messages = Array.isArray(body.messages) ? body.messages : [];
+  const userEntry = messages.find(m => m.role === 'user')?.content.trim();
+  if (!userEntry) {
+    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Empty message' }) };
+  }
+
+  // ---------- 3. Moderation guard (OpenAI policy) ----------
+  const modResp = await fetch('https://api.openai.com/v1/moderations', {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify({ input: userEntry })
   }).then(r => r.json());
-  if (mod.results[0].flagged) return res.status(400).json({ error: "Policy violation" });
+  if (modResp.results?.[0]?.flagged) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ error: "Content violates policy" })
+    };
+  }
 
-  // 2. System prompt + GPT-4o-mini
-  const payload = {
-    model: "gpt-4o-mini",
-    messages: [
-      { role: "system", content: "You are an email-writing assistant …" },
-      { role: "user", content: userMessage }
-    ],
-    temperature: 0.7
-  };
+  // ---------- 4. Call Chat Completions ----------
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 9_500); // stay under 10-s limit
+  try {
+    const ai = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',          // cheaper + faster than gpt-3.5
+        messages,
+        temperature: 0.7
+      }),
+      signal: controller.signal
+    }).then(r => r.json());
 
-  // 3. Non-streaming to stay <10s
-  const ai = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: auth,
-    body: JSON.stringify(payload),
-    signal: Abort(9500)
-  }).then(r => r.json());
+    const reply = ai.choices?.[0]?.message?.content?.trim() || '(no answer)';
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ reply })
+    };
+  } catch (e) {
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: e.name === 'AbortError' ? 'Timeout' : 'Upstream error' })
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
 
-  res.writeHead(200, cors);
-  return res.end(JSON.stringify(ai.choices[0].message));
+  // ---------- helper ----------
+  function authHeaders() {
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+    };
+  }
 };
