@@ -5,14 +5,15 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = """
-      default-src 'self';
-      script-src 'self' https://esm.sh;
-      style-src  'self' 'unsafe-inline'
-    """ 
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://esm.sh; style-src 'self' 'unsafe-inline'"
     Access-Control-Allow-Origin = "https://rococo-pithivier-bfeef1.netlify.app/"
 
 [[headers]]
   for = "/mailto.json"
   [headers.values]
     Cache-Control = "no-store"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
