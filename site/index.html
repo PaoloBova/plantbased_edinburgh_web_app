@@ -73,35 +73,18 @@
           </p>
           <p id="address-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
-        <div>
-          <label for="councillor-email" class="block text-base md:text-lg font-medium text-gray-700">Councillor Email</label>
-          <input
-            type="email"
-            id="councillor-email"
-            name="councillor-email"
-            aria-describedby="councillor-email-helper councillor-email-error"
-            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
-            required
-          >
-          <p id="councillor-email-helper" class="text-xs md:text-sm text-gray-600 mt-1">
-            One email address only. Send a separate email to each councillor.
-          </p>
-          <p id="councillor-email-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
+        <!-- dynamic list of councillor entries -->
+        <h3 class="text-lg font-semibold">Councillors</h3>
+        <div id="councillors-list" class="space-y-4">
+          <div class="councillor-row space-y-1">
+            <input type="email" name="councillor-email" placeholder="Councillor email" class="w-full p-2 border rounded" />
+            <input type="text" name="councillor-surname" placeholder="Councillor surname" class="w-full p-2 border rounded" />
+            <button type="button" class="remove-councillor text-sm text-red-600 hover:underline">Remove</button>
+          </div>
         </div>
-        <div>
-          <label for="councillor-surname" class="block text-base md:text-lg font-medium text-gray-700">
-            Councillor’s Surname
-          </label>
-          <input
-            type="text"
-            id="councillor-surname"
-            name="councillor-surname"
-            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
-          >
-          <p id="councillor-surname-helper" class="text-xs md:text-sm text-gray-600 mt-1">
-            Used to personalise the greeting.
-          </p>
-        </div>
+        <button type="button" id="add-councillor" class="text-sm text-emerald-600 hover:underline">
+          + Add another councillor
+        </button>
         <div>
           <label for="personal-message" class="block text-base md:text-lg font-medium text-gray-700">Personalised Message</label>
           <textarea
@@ -132,7 +115,7 @@
           type="submit"
           class="block mx-auto px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md"
         >
-          Open Email Client
+          Generate Email Drafts
         </button>
         <div class="mt-2 text-center">
           <a href="#" id="copy-email" class="text-sm text-emerald-600 hover:underline">
@@ -141,6 +124,11 @@
           <p id="copy-confirm" class="text-sm text-gray-600 mt-1 hidden">
             Email text copied!
           </p>
+        </div>
+        <!-- per-councillor email queue -->
+        <div id="email-queue" class="space-y-2 mt-4 hidden">
+          <p id="email-progress" class="text-sm text-gray-700"></p>
+          <div id="email-buttons" class="space-y-2"></div>
         </div>
       </form>
     </section>
