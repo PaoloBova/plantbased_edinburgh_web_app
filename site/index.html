@@ -9,71 +9,146 @@
   <script src="https://esm.sh/react@19.1.0"   integrity="sha384-…" crossorigin></script>
   <script src="https://esm.sh/react-dom@19.1.0/client" integrity="sha384-…" crossorigin></script> -->
 </head>
-<body class="bg-gradient-to-b from-slate-50 to-slate-100 text-gray-800 min-h-screen flex items-center">
-  <main class="w-full max-w-2xl space-y-12 px-4 mx-auto">
-    <section class="max-w-3xl mx-auto py-24 px-4 text-center prose prose-lg">
+<body class="bg-gradient-to-b from-slate-50 to-slate-100 text-lg md:text-xl leading-relaxed">
+  <main class="w-full max-w-2xl mx-auto space-y-12 px-4">
+    <section class="max-w-3xl mx-auto pt-24 px-4 text-center prose prose-lg">
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-        Tell us why sustainability matters to <span class="text-emerald-600">you</span>
+        Tell Edinburgh Council to go <span class="text-emerald-600">plant-based</span>
       </h1>
-      <p class="text-lg md:text-xl mb-8">
-        Scan the QR code or chat below to craft a personalised e-mail to our policy team.  
+      <!-- <p class="text-lg md:text-xl mb-8">
         One minute is all it takes.
-      </p>
-      <a id="cta-email" href="${MAILTO_LINK}" class="inline-block mt-12 px-6 py-3 bg-emerald-600 text-white rounded-lg shadow-lg transition hover:-translate-y-0.5">
-        Start my e-mail
-      </a>
+      </p> -->
     </section>
 
     <!-- 3 Simple Steps instructions -->
-    <section class="max-w-lg mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 prose prose-sm">
-      <h2 class="text-xl font-semibold">3 Simple Steps</h2>
+    <section class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 prose prose-lg">
+      <h2 class="text-xl font-semibold text-center">Email your local councillor in 1 minute</h2>
       <ol class="list-decimal list-inside space-y-2">
         <li>
           Find your ward at
-          <a href="https://boundaries.scot/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">boundaries.scot</a>
+          <a href="https://boundaries.scot/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">boundaries.scot</a>.
           Then go to
           <a href="https://www.edinburgh.gov.uk/findyourcouncillor" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">edinburgh.gov.uk/findyourcouncillor</a>
           and select your ward to find your councillors.
         </li>
         <li>
-          Personalise the pre-written email template below then open in your mail client.
-        </li>
-        <li>
-          Add one councillor’s email address and send the email.
+          Use the form to help personalise your email, then open in your mail client.
         </li>
       </ol>
     </section>
     <!-- Email generation form -->
-    <section class="max-w-lg mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4">
-      <form id="email-form" class="space-y-4">
+    <section class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 text-lg md:text-xl">
+      <form id="email-form" class="space-y-4" novalidate>
+        <!-- optional‐fields notice -->
+        <p class="text-sm md:text-base text-gray-700 italic">
+          All fields are optional and will prepopulate your email. We don’t store any of your details.
+        </p>
         <div>
-          <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-          <input type="text" id="full-name" name="full-name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <label for="full-name" class="block text-base md:text-lg font-medium text-gray-700">Full Name</label>
+          <input
+            type="text"
+            id="full-name"
+            name="full-name"
+            aria-describedby="full-name-helper full-name-error"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
+            required
+          >
+          <p id="full-name-helper" class="text-xs md:text-sm text-gray-600 mt-1">
+            Shown in the signature so your councillor knows who it’s from.
+          </p>
+          <p id="full-name-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
         <div>
-          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
-          <input type="text" id="address" name="address" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <label for="address" class="block text-base md:text-lg font-medium text-gray-700">Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            aria-describedby="address-helper address-error"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
+            required
+          >
+          <p id="address-helper" class="text-xs md:text-sm text-gray-600 mt-1">
+            House number + postcode — helps confirm you’re in their ward.
+          </p>
+          <p id="address-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
         <div>
-          <label for="councillor-email" class="block text-sm font-medium text-gray-700">Councillor Email</label>
-          <input type="email" id="councillor-email" name="councillor-email" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <label for="councillor-email" class="block text-base md:text-lg font-medium text-gray-700">Councillor Email</label>
+          <input
+            type="email"
+            id="councillor-email"
+            name="councillor-email"
+            aria-describedby="councillor-email-helper councillor-email-error"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
+            required
+          >
+          <p id="councillor-email-helper" class="text-xs md:text-sm text-gray-600 mt-1">
+            One email address only. Send a separate email to each councillor.
+          </p>
+          <p id="councillor-email-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
         <div>
-          <label for="personal-message" class="block text-sm font-medium text-gray-700">Personalized Message</label>
-          <textarea id="personal-message" name="personal-message" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
+          <label for="councillor-surname" class="block text-base md:text-lg font-medium text-gray-700">
+            Councillor’s Surname
+          </label>
+          <input
+            type="text"
+            id="councillor-surname"
+            name="councillor-surname"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
+          >
+          <p id="councillor-surname-helper" class="text-xs md:text-sm text-gray-600 mt-1">
+            Used to personalise the greeting.
+          </p>
+        </div>
+        <div>
+          <label for="personal-message" class="block text-base md:text-lg font-medium text-gray-700">Personalised Message</label>
+          <textarea
+            id="personal-message"
+            name="personal-message"
+            rows="4"
+            aria-describedby="personal-message-helper personal-message-error"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg"
+            required
+          ></textarea>
+          <p id="personal-message-helper" class="text-xs md:text-sm text-gray-600 mt-1 mb-1">
+            Introduce yourself and tell them why this issue matters to you. We’ll add a polite greeting and closing automatically. This will be the first paragraph.
+          </p>
+          <p id="personal-message-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
+        </div>
+        <div>
+          <label class="inline-flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="include-default-paras"
+              checked
+              class="h-4 w-4 text-emerald-600 border-gray-300 rounded"
+            >
+            <span class="text-sm text-gray-700">Include default paragraphs</span>
+          </label>
         </div>
         <button
-        type="submit"
-        class="px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md"
-      >
-        Send
-      </button>
+          type="submit"
+          class="block mx-auto px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md"
+        >
+          Open Email Client
+        </button>
+        <div class="mt-2 text-center">
+          <a href="#" id="copy-email" class="text-sm text-emerald-600 hover:underline">
+            Button not working? Copy email to clipboard instead.
+          </a>
+          <p id="copy-confirm" class="text-sm text-gray-600 mt-1 hidden">
+            Email text copied!
+          </p>
+        </div>
       </form>
     </section>
     <!-- Chat container -->
-    <section>
-      <div id="chat-container" class="max-w-prose mx-auto bg-white rounded-xl shadow-xl p-6 space-y-4">
-        <h2 class="text-lg font-medium mb-2">Need help personalizing your message?</h2>
+    <section id="chat-wrapper" hidden>
+      <div id="chat-container"
+           class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-xl p-6 space-y-4 text-lg md:text-xl">
+        <h2 class="text-lg font-medium mb-2">Need help personalising your message?</h2>
         <div id="chat-window" class="flex flex-col items-start gap-4 h-80 overflow-y-auto p-4 bg-gray-50 rounded-md shadow-inner">
           <!-- Messages will appear here -->
         </div>
@@ -81,13 +156,17 @@
           <input
             id="chat-input"
             type="text"
+            maxlength="1000"
             placeholder="Type your message..."
             class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
             required
           />
+          <p id="chat-error" class="text-xs text-red-600 mt-1 hidden">
+            Input too long; maximum 1000 characters allowed.
+          </p>
           <button
             type="submit"
-            class="px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md"
+            class="px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Send
           </button>
@@ -95,7 +174,6 @@
       </div>
     </section>
   </main>
-
   <script type="module" src="./mailto.js"></script>
   <script type="module" src="./main.js"></script>
 </body>
