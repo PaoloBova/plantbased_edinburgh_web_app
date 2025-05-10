@@ -60,6 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     messageDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
+
+    if (sender === 'Assistant') {
+      const btn = document.createElement('button');
+      btn.textContent = 'Use in email';
+      btn.type = 'button';
+      btn.classList.add('mt-1', 'text-sm', 'text-emerald-600', 'hover:underline');
+      btn.addEventListener('click', () => {
+        document.getElementById('personal-message').value = text;
+      });
+      messageDiv.appendChild(btn);
+    }
+
     chatWindow.appendChild(messageDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }
