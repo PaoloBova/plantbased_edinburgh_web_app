@@ -5,8 +5,11 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://esm.sh; style-src 'self' 'unsafe-inline'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://esm.sh; style-src 'self'; connect-src 'self' https://api.openai.com; frame-ancestors 'none'; upgrade-insecure-requests"
     Access-Control-Allow-Origin = "https://rococo-pithivier-bfeef1.netlify.app/"
+    Referrer-Policy         = "strict-origin"
+    X-Frame-Options         = "DENY"
+    Permissions-Policy      = "camera=(), microphone=()"
 
 [[headers]]
   for = "/mailto.json"
