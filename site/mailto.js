@@ -117,7 +117,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       copyBtn.className = 'email-copy-btn';
       copyBtn.textContent = 'Copy';
       copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(buildEmailText(surnames, i))
+        // include recipients header plus full email body
+        const toLine = `To: ${addr}`;
+        const ccLine = mailtoConfig.cc.length
+          ? `CC: ${mailtoConfig.cc.join(',')}`
+          : '';
+        const header = ccLine ? `${toLine}\n${ccLine}` : toLine;
+        const fullText = `${header}\n\n${buildEmailText(surnames, i)}`;
+        navigator.clipboard.writeText(fullText)
           .then(() => {
             copyBtn.textContent = 'Copied!';
             copyBtn.classList.add('copied');
