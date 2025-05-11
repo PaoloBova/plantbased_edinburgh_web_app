@@ -2,11 +2,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mailtoConfig = await fetch('/mailto.json', { cache: 'no-store' }).then(r => r.json());
   const councillors  = await fetch('/councillors.json', { cache: 'no-store' }).then(r => r.json());
   const form         = document.getElementById('email-form');
+  const hpField      = document.getElementById('hp');
   const wardSelect   = document.getElementById('ward-select');
   const includeCtl   = document.getElementById('include-default-paras');
   const queue        = document.getElementById('email-queue');
   const buttonsDiv   = document.getElementById('email-buttons');
   const progress     = document.getElementById('email-progress');
+
+  let readyToRender = false;
+  // unblock after 2s
+  setTimeout(() => { readyToRender = true; renderButtons(); }, 1000);
 
   // helper to clear previous buttons
   function clearButtons() {
@@ -51,6 +56,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Render buttons dynamically
   function renderButtons() {
+    // bot check: honeypot filled or not ready yet?
+    if (hpField.value || !readyToRender) {
+      clearButtons();
+      return;
+    }
+
     clearButtons();
     const ward = wardSelect.value;
     let list, surnames, fullNames;
@@ -116,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // initial render
+  // initial attempt (will no-op until delay)
   renderButtons();
 
   // re-render whenever ward or any form input changes

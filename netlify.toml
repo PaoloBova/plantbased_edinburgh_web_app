@@ -2,14 +2,16 @@
 [build]
   publish = "site"
 
+# apply to all static assets (if your site ever fetches from itself via fetch())
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://esm.sh; style-src 'self'; connect-src 'self' https://api.openai.com; frame-ancestors 'none'; upgrade-insecure-requests"
-    Access-Control-Allow-Origin = "https://rococo-pithivier-bfeef1.netlify.app/"
-    Referrer-Policy         = "strict-origin"
-    X-Frame-Options         = "DENY"
-    Permissions-Policy      = "camera=(), microphone=()"
+    Access-Control-Allow-Origin = "*"
+    Strict-Transport-Security    = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy       = "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://api.openai.com; frame-ancestors 'none'; upgrade-insecure-requests"
+    Referrer-Policy              = "strict-origin"
+    X-Frame-Options              = "DENY"
+    Permissions-Policy           = "camera=(), microphone=()"
 
 [[headers]]
   for = "/mailto.json"
@@ -17,6 +19,6 @@
     Cache-Control = "no-store"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+  from    = "/api/*"
+  to      = "/.netlify/functions/:splat"
+  status  = 200
