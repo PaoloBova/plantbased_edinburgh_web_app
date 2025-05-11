@@ -1,7 +1,9 @@
-export default {
-  content: ["./site/**/*.{html,js,jsx}"],
-  theme: { extend: {} },
-  plugins: [
-    require('@tailwindcss/typography')
-  ]
+module.exports = {
+  content: [
+    './site/**/*.{html,js}'
+  ],
+  theme: {
+    extend: {}
+  },
+  plugins: []
 };
