@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const mailtoConfig = await fetch('/mailto.json', { cache: 'no-store' }).then(r => r.json());
+  // dynamically load list of config files
+  const list = await fetch('/mailto_configs/index.json', { cache: 'no-store' })
+    .then(r => r.json());
+  const chosenFile = list[Math.floor(Math.random() * list.length)];
+  const mailtoConfig = await fetch(`/mailto_configs/${chosenFile}`, { cache: 'no-store' })
+    .then(r => r.json());
+
   const councillors  = await fetch('/councillors.json', { cache: 'no-store' }).then(r => r.json());
   const form         = document.getElementById('email-form');
   const hpField      = document.getElementById('hp');

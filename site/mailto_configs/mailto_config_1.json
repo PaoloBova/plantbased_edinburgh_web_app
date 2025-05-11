@@ -1,0 +1,15 @@
+{
+  "cc": ["plantbasededinburgh@protonmail.com"],
+  "subject": "Shaping Edinburgh’s Future: Plant-Based Catering for Our Council",
+  "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I’m a constituent deeply committed to addressing the climate emergency. To lead by example and reduce the council’s carbon footprint, I respectfully request that Edinburgh Council itself adopt plant-based menus for all council-run events and facilities.",
+    "later_paragraphs": [
+      "Research shows plant-based meals can lower greenhouse gas emissions by up to 75%, while also improving public health and supporting local sustainable producers.",
+      "Several UK councils have piloted this approach—serving meat-free options in council chambers and civic functions—with strong community support and clear environmental benefits.",
+      "A council-wide commitment sends a powerful signal that Edinburgh stands at the forefront of climate action."
+    ],
+    "closing": "Thank you for your leadership in building a greener Edinburgh.",
+    "signature": "[fullName]"
+  }
+}
