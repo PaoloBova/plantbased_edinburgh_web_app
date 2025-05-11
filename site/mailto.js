@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // unblock after 2s
   setTimeout(() => { readyToRender = true; renderButtons(); }, 1000);
 
+  // simple mobile detection
+  const isMobile = /Mobi|Android|iPhone|iPad/.test(navigator.userAgent);
+
   // helper to clear previous buttons
   function clearButtons() {
     buttonsDiv.innerHTML = '';
@@ -100,14 +103,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         ? `Open email for Councillor ${fullNames[i]}`
         : 'Open email';
       openBtn.addEventListener('click', () => {
-        const body = encodeURIComponent(
-          buildEmailText(surnames, i)
-            .split('\n\n').slice(1).join('\n\n')
+        const body    = encodeURIComponent(
+          buildEmailText(surnames, i).split('\n\n').slice(1).join('\n\n')
         );
         const subject = encodeURIComponent(mailtoConfig.subject);
-        const cc = mailtoConfig.cc.map(encodeURIComponent).join(',');
-        const link = `mailto:${addr}?cc=${cc}&subject=${subject}&body=${body}`;
-        window.open(link, '_blank');
+        const ccList  = mailtoConfig.cc.map(encodeURIComponent).join(',');
+        const link    = `mailto:${addr}?cc=${ccList}&subject=${subject}&body=${body}`;
+        window.open(link, isMobile ? '_self' : '_blank');
+
         progress.textContent = `${i + 1} of ${list.length} emails ready`;
       });
 
