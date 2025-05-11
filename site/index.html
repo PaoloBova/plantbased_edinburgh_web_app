@@ -3,11 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Share Your Story</title>
+  <title>Plant-based Edinburgh</title>
   <link rel="stylesheet" href="./styles.css">
-  <!-- <link rel="stylesheet" href="/styles.css" integrity="sha384-…">
-  <script src="https://esm.sh/react@19.1.0"   integrity="sha384-…" crossorigin></script>
-  <script src="https://esm.sh/react-dom@19.1.0/client" integrity="sha384-…" crossorigin></script> -->
 </head>
 <body class="bg-gradient-to-b from-slate-50 to-slate-100 text-lg md:text-xl leading-relaxed">
   <main class="w-full max-w-2xl mx-auto space-y-12 px-4">
@@ -15,33 +12,14 @@
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
         Tell Edinburgh Council to go <span class="text-emerald-600">plant-based</span>
       </h1>
-      <!-- <p class="text-lg md:text-xl mb-8">
-        One minute is all it takes.
-      </p> -->
-    </section>
-
-    <!-- 3 Simple Steps instructions -->
-    <section class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 prose prose-lg">
-      <h2 class="text-xl font-semibold text-center">Email your local councillor in 1 minute</h2>
-      <ol class="list-decimal list-inside space-y-2">
-        <li>
-          Find your ward at
-          <a href="https://boundaries.scot/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">boundaries.scot</a>.
-          Then go to
-          <a href="https://www.edinburgh.gov.uk/findyourcouncillor" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">edinburgh.gov.uk/findyourcouncillor</a>
-          and select your ward to find your councillors.
-        </li>
-        <li>
-          Use the form to help personalise your email, then open in your mail client.
-        </li>
-      </ol>
     </section>
     <!-- Email generation form -->
     <section class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 text-lg md:text-xl">
+      <h2 class="text-xl font-semibold text-center">Email your local councillors in 1 minute</h2>
       <form id="email-form" class="space-y-4" novalidate>
         <!-- optional‐fields notice -->
         <p class="text-sm md:text-base text-gray-700 italic">
-          All fields are optional and will prepopulate your email. We don’t store any of your details.
+          All fields are optional and will prepopulate your email. We don’t store any of your details or send emails automatically.
         </p>
         <div>
           <label for="full-name" class="block text-base md:text-lg font-medium text-gray-700">Full Name</label>
@@ -73,18 +51,19 @@
           </p>
           <p id="address-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
-        <!-- dynamic list of councillor entries -->
-        <h3 class="text-lg font-semibold">Councillors</h3>
-        <div id="councillors-list" class="space-y-4">
-          <div class="councillor-row space-y-1">
-            <input type="email" name="councillor-email" placeholder="Councillor email" class="w-full p-2 border rounded" />
-            <input type="text" name="councillor-surname" placeholder="Councillor surname" class="w-full p-2 border rounded" />
-            <button type="button" class="remove-councillor text-sm text-red-600 hover:underline">Remove</button>
-          </div>
+        <div>
+          <label for="ward-select" class="block text-base md:text-lg font-medium text-gray-700">
+            Select Your Ward
+          </label>
+          <p id="ward-helper" class="text-xs md:text-sm text-gray-600 mt-1">
+            This lets us find your councillors for you. Find your ward at
+            <a href="https://boundaries.scot/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">boundaries.scot</a>.
+          </p>
+          <select id="ward-select" name="ward" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg">
+            <option value="" disabled selected>Choose a ward…</option>
+            <!-- JS will populate options -->
+          </select>
         </div>
-        <button type="button" id="add-councillor" class="text-sm text-emerald-600 hover:underline">
-          + Add another councillor
-        </button>
         <div>
           <label for="personal-message" class="block text-base md:text-lg font-medium text-gray-700">Personalised Message</label>
           <textarea
@@ -108,22 +87,8 @@
               checked
               class="h-4 w-4 text-emerald-600 border-gray-300 rounded"
             >
-            <span class="text-sm text-gray-700">Include default paragraphs</span>
+            <span class="text-sm text-gray-700">Include paragraphs with supporting evidence</span>
           </label>
-        </div>
-        <button
-          type="submit"
-          class="block mx-auto px-6 py-3 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 shadow-md"
-        >
-          Generate Email Drafts
-        </button>
-        <div class="mt-2 text-center">
-          <a href="#" id="copy-email" class="text-sm text-emerald-600 hover:underline">
-            Button not working? Copy email to clipboard instead.
-          </a>
-          <p id="copy-confirm" class="text-sm text-gray-600 mt-1 hidden">
-            Email text copied!
-          </p>
         </div>
         <!-- per-councillor email queue -->
         <div id="email-queue" class="space-y-2 mt-4 hidden">

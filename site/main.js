@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   const form = document.getElementById('email-form');
-  const fields = ['full-name', 'address', 'councillor-email', 'personal-message'];
+  const fields = ['full-name', 'address', 'personal-message'];
 
   fields.forEach(id => {
     const input = document.getElementById(id);
