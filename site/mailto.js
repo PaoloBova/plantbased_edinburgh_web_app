@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     queue.classList.remove('hidden');
     progress.textContent = ward
-      ? `0 of ${list.length} emails ready`
-      : 'Ready to open email';
+      ? `0 of ${list.length} emails sent`
+      : 'No emails sent';
 
     list.forEach((addr, i) => {
       const container = document.createElement('div');
