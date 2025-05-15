@@ -16,6 +16,12 @@
     <!-- Email generation form -->
     <section class="w-full max-w-md md:max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-4 text-lg md:text-xl">
       <h2 class="text-xl font-semibold text-center">Email your local councillors in 1 minute</h2>
+      <p class="text-center text-sm md:text-base text-gray-700">
+        Learn more and join the campaign at 
+        <a href="https://www.plantbasedcouncils.org" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">
+          plantbasedcouncils.org
+        </a>.
+      </p>
       <form id="email-form" class="space-y-4" novalidate>
         <!-- optional‐fields notice -->
         <p class="text-sm md:text-base text-gray-700 italic">
@@ -47,7 +53,7 @@
             required
           >
           <p id="address-helper" class="text-xs md:text-sm text-gray-600 mt-1">
-            House number + postcode — helps confirm you’re in their ward.
+            House number + street + postcode — helps confirm you live in their ward.
           </p>
           <p id="address-error" class="text-xs md:text-sm text-red-600 mt-1 hidden" role="alert"></p>
         </div>
@@ -56,10 +62,35 @@
             Select Your Ward
           </label>
           <p id="ward-helper" class="text-xs md:text-sm text-gray-600 mt-1">
-            This lets us find your councillors for you. Find your ward at
-            <a href="https://boundaries.scot/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">boundaries.scot</a>.
+            We will find your councillors for you.
           </p>
-          <select id="ward-select" name="ward" class="mt-1 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg">
+          <div class="flex justify-center mt-2">
+            <a
+              href="https://boundaries.scot/"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center px-6 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 font-medium shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            >
+              Find your ward
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-2 -mr-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                role="img"
+                aria-labelledby="extLinkTitle"
+              >
+                <title id="extLinkTitle">Opens in new tab</title>
+                <path d="M14 3h7v7M21 3l-8 8" />
+                <rect x="3" y="8" width="13" height="13" rx="2" ry="2" />
+              </svg>
+            </a>
+          </div>
+          <select id="ward-select" name="ward" class="mt-4 block w-full p-2 border border-gray-300 rounded-md text-base md:text-lg">
             <option value="" disabled selected>Choose a ward…</option>
             <!-- JS will populate options -->
           </select>
@@ -87,7 +118,7 @@
               checked
               class="h-4 w-4 text-emerald-600 border-gray-300 rounded"
             >
-            <span class="text-sm text-gray-700">Include paragraphs with supporting evidence</span>
+            <span class="text-sm text-gray-700">Include our email template</span>
           </label>
         </div>
 
