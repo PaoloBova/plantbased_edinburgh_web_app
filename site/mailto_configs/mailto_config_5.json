@@ -1,0 +1,15 @@
+{    
+    "cc": ["plantbasededinburgh@protonmail.com"],
+    "subject": "Tackle the climate emergency - Adopt plant based food at Edinburgh Council",
+    "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I am writing to you as one of your constituents to ask you to support a campaign to switch council catering for meetings and internal events to 100% plant based food.",
+    "later_paragraphs": [
+        "Animal agriculture is a driving cause of the climate change which threatens the quality of life of each and every one of us on this planet. It is emitting greenhouse gases which are rapidly warming our world, and is the biggest cause of global deforestation and habitat loss.",
+        "Adopting plant based is a highly effective way that we can reduce our climate impact. Plant based diets only have 30% the climate impact of typical diets which include meat and dairy.",
+        "What's more, plant based eating is also cheaper and healthier than the alternative. Source: https://www.ox.ac.uk/news/2021-11-11-sustainable-eating-cheaper-and-healthier-oxford-study",
+        "The council should lead by example by switching all its internal events to be 100% plant based. This would demonstrate a genuine commitment to the council's goal of net zero by 2030. What's more, in 2023 the council signed the plant-based treaty, but the council has not taken the step of actually transforming their own menu. Please push the council to adopt this plan, to show that you are willing to implement a policy which is clearly in line with your stated values and goals as a council."],
+    "closing": "Kind regards,",
+    "signature": "[fullName]"
+    }
+}
