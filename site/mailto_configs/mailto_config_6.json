@@ -1,17 +1,15 @@
 {
-    "cc": ["plantbasededinburgh@protonmail.com"],
-    "subject": "Request to Switch to a Plant-Based Council",
-    "bodyConfig": {
-        "greeting": "Dear Councillor",
-        "opening_paragraph": "I am writing to you to ask that the council switch to being a Plant-Based Council. This means only provisioning plant based food and drink at all council meetings and events. I am aware the council has already signed the Plant-Based Treaty.",
-        "later_paragraphs": [
-            "This is in line with the Plant-Based Treaty the council endorsed in 2023.",
-            "This is required for the council to meet its 2030 net zero climate targets.",
-            "This would demonstrate that Edinburgh City Council is a leading council in Scotland on the environmental issues and animal rights. ECC would join other leaders, like Oxford and Cambridge city council's, which have already pledged to go plant based.",
-            "Back in January 2024 ECC put out an Action Plan for the Plant-Based Treaty, which you can read here: https://democracy.edinburgh.gov.uk/documents/s65215/Item%207.2%20-%20Plant%20Based%20Treaty%20Action%20Plan.pdf - it is disappointing to note that it doesn't say the council will go plant based, instead it only aims for: \"Achieving a 20-50% reduction in all meat and dairy consumption by 2050 as recommended by the UK Climate Change Committee\".",
-            "It is my belief that becoming plant based can be done in line with the council's wider food agenda, as indicated by the other authorities which have already made this transition. It is also clear that if the council wishes to meet its ambitious and commendable 2030 net-zero targets, it is going to have to actually go plant-based soon."
-        ],
-        "closing": "Thanks,",
-        "signature": "[fullName]"
-    }
+  "cc": ["plantbasededinburgh@protonmail.com"],
+  "subject": "Edinburgh's opportunity to lead on sustainable catering",
+  "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I am writing regarding the proposal for Edinburgh Council to adopt plant-based catering for council meetings and events. I believe this represents an opportunity for Edinburgh to demonstrate climate leadership.",
+    "later_paragraphs": [
+      "Edinburgh was the first European capital to endorse the Plant Based Treaty. This showed forward thinking on the connection between food systems and climate change. Changing the council's own catering would be a logical follow-up to that endorsement.",
+      "Climate science is clear that reducing consumption of animal products is necessary to meet emissions targets. While individual dietary choices remain personal, public institutions can make decisions about what they serve at their own events.",
+      "Councils including Oxfordshire, Cambridge, and Exeter have already adopted plant-based catering policies. These councils report that plant-based menus can be both varied and well-received when properly planned. Edinburgh could join them in taking this practical step towards climate action.",
+    ],
+    "closing": "Thank you,",
+    "signature": "[fullName]"
+  }
 }

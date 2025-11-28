@@ -1,16 +1,16 @@
 {
-    "cc": ["plantbasededinburgh@protonmail.com"],
-    "subject": "Time to Switch Edinburgh Council Meals to Plant-Based",
-    "bodyConfig": {
-      "greeting": "Dear Councillor",
-      "opening_paragraph": "I am a resident of your ward and want to know what the council is doing to reduce emissions. We’re already starting to feel the effects of climate change in Scotland and I really hope we can do our part to stop this getting worse. I’m particularly concerned by the emissions that are embedded in our food system.",
-      "later_paragraphs": [
-        "There is overwhelming evidence that meat and dairy production are significant contributors to climate breakdown, and one of the biggest causes of biodiversity loss. There is lots of evidence that plant-based food has a much lower environmental impact, and the National Food Strategy recommends that food provided in the public sector should be plant-based by default.",
-        "Councils across the country have been responding to this recommendation by committing to go 100% plant-based in their internal catering - Oxfordshire County, Exeter City, Faversham Town, and more. It is a small step in the right direction, but one that sends a really important message about our future.",
-        "This seems to me to be an obvious next step after declaring a climate emergency and supporting the Plant Based Treaty.",
-        "Does Edinburgh Council have any policies in this regard at the moment? What would be the best way to go about getting these ideas debated and advanced in the council?"
-      ],
-      "closing": "Kind regards,",
-      "signature": "[fullName]"
-    }
+  "cc": ["plantbasededinburgh@protonmail.com"],
+  "subject": "Supporting plant-based catering for council events",
+  "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I am writing as your constituent to express my support for switching council catering to plant-based options. I understand this decision will be made in March 2026.",
+    "later_paragraphs": [
+      "Research from Oxford University has found that plant-based diets are not only more sustainable but can also be more cost-effective than conventional diets.",
+      "Animal agriculture is a significant contributor to climate change, deforestation, and biodiversity loss. Plant-based foods require substantially less land, water, and energy to produce.",
+      "Given Edinburgh's Net Zero 2030 target, I believe the council should consider all available opportunities to reduce emissions, including changes to catering practices.",
+      "Edinburgh has a strong plant-based food culture, from established restaurants to catering businesses. The council would be well-positioned to source high-quality, varied plant-based menus locally."
+    ],
+    "closing": "Kind regards,",
+    "signature": "[fullName]"
   }
+}

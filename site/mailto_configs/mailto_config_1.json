@@ -1,16 +1,14 @@
 {
   "cc": ["plantbasededinburgh@protonmail.com"],
-  "subject": "Shaping Edinburgh’s Future: Plant-Based Catering for Our Council",
+  "subject": "Plant-based council catering decision",
   "bodyConfig": {
     "greeting": "Dear Councillor",
-    "opening_paragraph": "I think we need to be deeply committed to addressing the climate emergency.",
+    "opening_paragraph": "I am writing to you as one of your constituents regarding the plant-based catering decision that will come before the council in March 2026 when the report has been finalised. I wanted to share my perspective on why I support this transition.",
     "later_paragraphs": [
-      "To lead by example and reduce the council’s carbon footprint, I respectfully request that Edinburgh Council itself adopt plant-based menus for all council-run events and facilities.",
-      "Research shows plant-based meals can lower greenhouse gas emissions by up to 75%, while also improving public health and supporting local sustainable producers.",
-      "Several UK councils have successfully piloted plant-based catering in council chambers and civic functions.",
-      "A council-wide commitment would send a powerful signal that Edinburgh also stands at the forefront of climate action."
+      "Edinburgh has set ambitious climate targets, including Net Zero by 2030. The food system contributes significantly to greenhouse gas emissions, and research shows that plant-based foods generally have a much lower carbon footprint than animal products. Switching council catering would be a practical step towards meeting these commitments.",
+      "Several UK councils have already made this transition, including Oxfordshire County Council, Cambridge City Council, and Exeter City Council. With Edinburgh's growing plant-based food sector, this makes the transition particularly feasible for council catering."
     ],
-    "closing": "Thank you in advance for your leadership in building a greener Edinburgh.",
+    "closing": "Yours sincerely,",
     "signature": "[fullName]"
   }
 }

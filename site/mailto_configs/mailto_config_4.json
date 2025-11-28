@@ -1,14 +1,16 @@
 {
-    "cc": ["plantbasededinburgh@protonmail.com"],
-    "subject": "Plant-Based Catering and Council Climate Goals",
-    "bodyConfig": {
-        "greeting": "Dear Councillor",
-        "opening_paragraph": "I live in your ward and wanted to get your thoughts on food and climate policy, especially in light of the Plant-Based Treaty.",
-        "later_paragraphs": [
-            "I noticed that the council hasn't included its own catering services in the treaty (section 3.3). Do you support this approach, or would you like to see a shift toward more plant-based or even 100% plant-based options at council events and buildings?",
-            "With animal agriculture being a major driver of emissions, I'm curious whether you see plant-based catering as part of the solution toward the council's net zero 2050 goals.",
-            "Thanks for your time. I'd love to keep this dialogue going if you're open to it."],
-        "closing": "Best,",
-        "signature": "[fullName]"
-    }
+  "cc": ["plantbasededinburgh@protonmail.com"],
+  "subject": "Health and environmental benefits of plant-based catering",
+  "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I am writing to you about the upcoming decision on plant-based council catering. I believe this change would benefit both public health and the environment.",
+    "later_paragraphs": [
+      "Public health research shows that plant-based diets are associated with lower rates of heart disease, type 2 diabetes, and certain cancers. The National Food Strategy has recommended that food served in the public sector should be plant-based by default.",
+      "From an environmental perspective, plant-based foods have substantially lower greenhouse gas emissions compared to animal products. They also use less agricultural land and freshwater resources.",
+      "Edinburgh has committed to ambitious climate targets and has endorsed policies recognizing the importance of sustainable food systems. Changing council catering would be a concrete implementation of these commitments.",
+      "Edinburgh has a thriving plant-based food scene, with restaurants and caterers offering varied and high-quality menus. The council would have good local options for sourcing plant-based catering. I would encourage you to support this proposal when it comes back to council."
+    ],
+    "closing": "Best wishes,",
+    "signature": "[fullName]"
+  }
 }

@@ -1,0 +1,15 @@
+{    
+    "cc": ["plantbasededinburgh@protonmail.com"],
+    "subject": "Support 100% Plant Based catering at Edinburgh council",
+    "bodyConfig": {
+    "greeting": "Dear Councillor",
+    "opening_paragraph": "I am writing to you as one of your constituents to ask you to support a campaign to switch council catering for meetings and internal events to 100% plant based food.",
+    "later_paragraphs": [
+        "Eating plant based is one of the simplest and most effective ways we can reduce our impact on the environment. Plant based foods have much lower carbon footprints, freshwater usage, land usage, and water pollution impact than animal based foods. By switching to plant based food, we could reduce our land usage for food by 75%, allowing us to restore habitats being degraded by deforestation, and unlock massive carbon sequestration potential by growing more trees. Source: https://ourworldindata.org/land-use-diets",
+        "As you will know, the council signed the Plant Based Treaty in 2023, and it has an ambitious goal of Net Zero by 2030. Despite this, the council has still not committed to serving plant based foods at its own events. I believe that this contradicts both of those two policies.",
+        "Please let me know whether you support this idea and if you have any questions about it."
+    ],
+    "closing": "Kind regards,",
+    "signature": "[fullName]"
+    }
+}
